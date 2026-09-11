@@ -1,0 +1,26 @@
+:root {
+    --sky: #a9d6f5;
+    --sky-light: #e8f4fc;
+    --sky-deep: #6fb6e8;
+    --text: #3a5a6b;
+  }
+ 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Georgia', 'Segoe UI', serif;
+    cursor: default;
+  }
+ 
+  body {
+    background: linear-gradient(180deg, var(--sky-light) 0%, var(--sky) 55%, var(--sky-deep) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+  }
+ 

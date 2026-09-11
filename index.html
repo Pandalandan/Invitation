@@ -7,6 +7,17 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<button id="muteBtn" onclick="toggleMute()">🔊</button>
+ 
+<div id="introOverlay">
+  <div id="welcomeText">Welcome</div>
+  <div id="nameStep">
+    <div id="namePrompt">please type your name</div>
+    <input type="text" id="nameInput" placeholder="Your name" maxlength="30" autocomplete="off">
+    <button id="nameSubmit" onclick="submitName()">Continue →</button>
+  </div>
+</div>
+
 
 <script src="script.js"></script>
 </body>
