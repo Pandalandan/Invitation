@@ -46,7 +46,34 @@
     <div id="puzzleFeedback">&nbsp;</div>
   </div>
 
-  
+  <!-- SPECIAL MESSAGE -->
+  <div class="screen" id="messageScreen">
+    <div class="bear">🐻💙</div>
+    <h1 style="min-height:auto;">You always make my day special and thank you for always making me feel happy.</h1>
+    <button class="nextBtn" onclick="showAsk()">Continue →</button>
+  </div>
+ 
+  <!-- QUESTION SCREEN -->
+  <div class="screen" id="askScreen">
+    <div class="bear">🐻💙</div>
+    <h1 id="mainQuestion">Will you be my Valentine?</h1>
+    <p class="subtitle">a very important question, please answer carefully</p>
+    <div class="buttons">
+      <button id="yesBtn" onclick="sayYes()">Yes 💙</button>
+      <button id="noBtn" onmouseover="dodge()" onclick="dodge()" ontouchstart="dodge(event)">No</button>
+    </div>
+    <div class="no-caption" id="noCaption">&nbsp;</div>
+  </div>
+ 
+  <!-- RESULT -->
+  <div id="result">
+    <div class="bear" style="font-size:4.2rem;">🌸🐻💙</div>
+    <h2 id="resultHeading">Yay! I knew you'd say yes.</h2>
+    <p>Sky blue skies and baby's breath, just for you. Happy Valentine's Day.</p>
+  </div>
+ 
+</div>
+ 
 
 <script src="script.js"></script>
 </body>
