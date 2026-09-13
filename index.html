@@ -32,6 +32,22 @@
   </div>
  
 
+  <!-- WORD SCRAMBLE PUZZLE -->
+  <div class="screen" id="puzzleScreen">
+    <h1 style="min-height:auto;">Unscramble these before I ask you something 💙</h1>
+    <div id="puzzleProgress">Word 1 of 5</div>
+    <div id="puzzleHint"></div>
+    <div id="answerSlots"></div>
+    <div id="letterBank"></div>
+    <div class="puzzle-actions">
+      <button id="checkBtn" onclick="checkAnswer()">Check</button>
+      <button id="clearBtn" onclick="clearAnswer()">Clear</button>
+    </div>
+    <div id="puzzleFeedback">&nbsp;</div>
+  </div>
+
+  
+
 <script src="script.js"></script>
 </body>
 </html>
