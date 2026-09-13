@@ -200,3 +200,95 @@
     }
   }
  
+  /* ---------- INTRO CAROUSEL ---------- */
+  function buildSlides() {
+    return [
+      `Hey ${herName}... I have something to ask.`,
+      "But first, a few reasons why...",
+      `You make ordinary days feel like sky-blue ones, ${herName}.`,
+      "You're kind, you're funny, and you smell like flowers (probably).",
+      "One more thing before I ask..."
+    ];
+  }
+  let slides = buildSlides();
+  let slideIndex = 0;
+  const introText = document.getElementById('introText');
+  const dotsContainer = document.getElementById('dots');
+  const nextBtn = document.getElementById('nextBtn');
+ 
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dotsContainer.appendChild(dot);
+  });
+ 
+  function typeText(text, el, speed = 35) {
+    el.textContent = '';
+    let i = 0;
+    const timer = setInterval(() => {
+      el.textContent += text[i];
+      i++;
+      if (i >= text.length) clearInterval(timer);
+    }, speed);
+  }
+ 
+  function updateDots() {
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === slideIndex);
+    });
+  }
+ 
+  function nextSlide() {
+    sfxClick();
+    slideIndex++;
+    if (slideIndex >= slides.length) {
+      document.getElementById('introScreen').classList.remove('active');
+      document.getElementById('puzzleScreen').classList.add('active');
+      startPuzzle();
+      return;
+    }
+    typeText(slides[slideIndex], introText);
+    updateDots();
+    nextBtn.textContent = slideIndex === slides.length - 1 ? "Let's go →" : "Next →";
+  }
+
+  /* ---------- BLACK OPENING + NAME CAPTURE ---------- */
+  let herName = 'you';
+  const overlay = document.getElementById('introOverlay');
+  const nameStep = document.getElementById('nameStep');
+  const nameInput = document.getElementById('nameInput');
+  const card = document.getElementById('card');
+ 
+  setTimeout(() => {
+    nameStep.classList.add('visible');
+    nameInput.focus();
+  }, 1900);
+ 
+  nameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') submitName();
+  });
+ 
+  function submitName() {
+    ensureAudio();
+    const raw = nameInput.value.trim();
+    if (raw) {
+      herName = raw.replace(/[<>]/g, '');
+    }
+    sfxClick();
+ 
+    // personalize text now that we have her name
+    document.getElementById('mainQuestion').textContent = `Will you be my Valentine, ${herName}?`;
+    document.getElementById('resultHeading').textContent = `Yay! I knew you'd say yes, ${herName}.`;
+ 
+    slides = buildSlides();
+ 
+    overlay.classList.add('fade-out');
+    card.style.visibility = 'visible';
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      typeText(slides[0], introText);
+    }, 1100);
+  }
+
+
+  
